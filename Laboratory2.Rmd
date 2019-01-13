@@ -17,7 +17,7 @@ comment: Rmd Document with Markdown + Embedded R Code
 
 ```{r setup, include=FALSE, purl=FALSE, eval=TRUE}
 
-source('R/ANLY530_Laboratory1_Helper.R')
+source('R/ANLY530_Laboratory2_Helper.R')
 
 ```
 
@@ -25,16 +25,13 @@ source('R/ANLY530_Laboratory1_Helper.R')
 
 library(knitr)
 library(kableExtra)
-read_chunk('R/ANLY530_Laboratory1_Chunks.R')
+read_chunk('R/ANLY530_Laboratory2_Chunks.R')
 
 ```
 
 Some helper functions do exists to support the code snippets below such as: ```fullFilePath```
 
 ---
-
-# Method #1. Tree-based classification
-
 
 ```{r loadLibraries, echo=FALSE, message=FALSE, warning=FALSE}
 ```
@@ -44,167 +41,11 @@ Let us start by [Loading the Data Sheets]
 ```{r loadSheets, echo=FALSE, message=FALSE, warning=FALSE}
 ```
 
-## [Step 1: Collecting the data]
+# Part 1
 
-```{r method1Step1CollectingData, echo=FALSE, message=FALSE, warning=FALSE}
+## Collecting the data
+
+```{r collectingData, echo=FALSE, message=FALSE, warning=FALSE}
 ```
 
-## [Step 2: Exploring the data]
-
-```{r method1Step2ExploringData, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Step 3: Training a model on the data]
-
-```{r method1Step3ModelTraining, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Step 4: Evaluating Model Performance]
-
-```{r method1PerformanceEvaluation, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## Method 1 Confusion Table
-
-```{r method1ConfusionTable, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-# Method #2. Support vector machines
-
-## [Method 2 Step 1: Collecting the data]
-
-```{r method2Step1CollectingData, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Method 2 Step 2: Preparing the Data]
-
-```{r method2Step2PreparinggData, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Method 2 Step 3: Training a Model on the Data]
-
-```{r method2Step3ModelTraining, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Method 2 Step 4: Evaluating Model Performance]
-
-```{r method2PerformanceEvaluation, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Method 2 Agreement Table]
-
-```{r method2AgreementTable, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-# Method #3. Adding regression to trees
-
-## [Method 3 Step 1: Collecting the Data]
-
-```{r method3Step1CollectingData, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Method 3 Step 2: Exploring and Preparing the Data]
-
-
-```{r method3Step2ExploringPreparingData, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Method 3 Step 3: Training a Model on the Data]
-
-
-```{r method3Step3ModelTraining, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
-## [Method 3 Step 4: Evaluating Model Performance]
-
-```{r method3Step4PerformanceEvaluation, echo=FALSE, message=FALSE, warning=FALSE}
-```
-
----
-
-# Appendix
-
-### Required Libraries
-
-```{r installLibraries, eval=FALSE}
-```
-
-```{r loadLibraries, eval=FALSE}
-```
-
-### Helper Functions
-
-```{r helperFunctions, eval=FALSE}
-```
-
-### Loading the Data Sheets
-
-```{r loadSheets, eval=FALSE}
-```
-
-### Method 1 Step 1: Collecting the data
-
-```{r method1Step1CollectingData, eval=FALSE}
-```
-
-### Method 1 Step 2: Exploring the data
-
-```{r method1Step2ExploringData, eval=FALSE}
-```
-
-### Method 1 Step 3: Training a model on the data
-
-```{r method1Step3ModelTraining, eval=FALSE}
-```
-
-### Method 1 Step 4: Evaluating Model Performance
-
-```{r method1PerformanceEvaluation, eval=FALSE}
-```
-
-### Method 2 Step 1: Collecting the data
-
-```{r method2Step1CollectingData, eval=FALSE}
-```
-
-### Method 2 Step 2: Preparing the Data
-
-```{r method2Step2PreparinggData, eval=FALSE}
-```
-
-### Method 2 Step 3: Training a Model on the Data
-
-```{r method2Step3ModelTraining, eval=FALSE}
-```
-
-### Method 2 Step 4: Evaluating Model Performance
-
-```{r method2PerformanceEvaluation, eval=FALSE}
-```
-
-```{r method2AgreementTable, eval=FALSE}
-```
-
-### Method 3 Step 1: Collecting the Data
-
-```{r method3Step1CollectingData, eval=FALSE}
-```
-
-### Method 3 Step 2: Exploring and Preparing the Data
-
-
-```{r method3Step2ExploringPreparingData, eval=FALSE}
-```
-
-### Method 3 Step 3: Training a Model on the Data
-
-```{r method3Step3ModelTraining, eval=FALSE}
-```
-
-### Method 3 Step 4: Evaluating Model Performance
-
-```{r method3Step4PerformanceEvaluation, eval=FALSE}
-```
-
-## References
 
