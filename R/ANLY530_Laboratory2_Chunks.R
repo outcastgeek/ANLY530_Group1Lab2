@@ -3,12 +3,14 @@
 install.packages("knitr")
 install.packages("kableExtra")
 install.packages("dplyr")
+install.packages("ggplot2")
 install.packages("caret", dependencies = c("Depends", "Suggests"))
 install.packages("naivebayes")
 
 ## @knitr loadLibraries
 
 library(dplyr)
+library(ggplot2)
 library(caret)
 library(naivebayes)
 
