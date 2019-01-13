@@ -41,14 +41,14 @@ Let us start by [Loading the Data Sheets]
 ```{r loadSheets, echo=FALSE, message=FALSE, warning=FALSE}
 ```
 
-# Part 1: Exploring and Preparing the Data
+# Part 1 & 2: Naive Bayes Classifiers
 
 ## Collecting the data
 
 ```{r collectingData, echo=FALSE, message=FALSE, warning=FALSE}
 ```
 
-## Step 1
+## Step 1: Exploring and Preparing the Data
 
 ```{r part1Step1, message=FALSE, warning=FALSE}
 ```
