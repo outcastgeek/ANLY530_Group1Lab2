@@ -4,6 +4,9 @@ install.packages("knitr")
 install.packages("kableExtra")
 install.packages("dplyr")
 install.packages("ggplot2")
+install.packages("ModelMetrics")
+install.packages("generics")
+install.packages("gower")
 install.packages("caret", dependencies = c("Depends", "Suggests"))
 install.packages("naivebayes")
 
@@ -63,7 +66,7 @@ credit <- creditDataFile %>%
   read.csv(encoding = "UTF-8", header=TRUE, stringsAsFactors=FALSE)
 
 # popularity
-letters <- onlineNewsPopularityFile %>%
+onlineNewsPopularity <- onlineNewsPopularityFile %>%
   fullFilePath %>%
   read.csv(encoding = "UTF-8", header=TRUE, stringsAsFactors=FALSE)
 
