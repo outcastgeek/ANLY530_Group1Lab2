@@ -1,12 +1,12 @@
 ---
-title: "ANLY 530 Group Assignment (Laboratory 1)"
+title: "ANLY 530 Group Assignment (Laboratory 2)"
 author:
 - "Josseline Betio"
 - "Akpany Benjamin Ebby"
 - "Yajun Wang"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
-  pdf_document:
+  html_document:
     highlight: zenburn
 comment: Rmd Document with Markdown + Embedded R Code
 ---
