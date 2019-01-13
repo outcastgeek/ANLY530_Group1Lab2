@@ -70,7 +70,7 @@ onlineNewsPopularity <- onlineNewsPopularityFile %>%
   fullFilePath %>%
   read.csv(encoding = "UTF-8", header=TRUE, stringsAsFactors=FALSE)
 
-## @knitr Part1Step1
+## @knitr part1Step1
 
 sum(is.na(credit))
 
@@ -86,6 +86,20 @@ m <- cor(creditDataScaled)
 # Determine the threshold to use for feature (variable) selection and perform feature selection
 highlycor <- findCorrelation(m, 0.30)
 
-## @knitr Part1Step2
+# Recombine the class variable with the highly correlated credit data and split into training and test data sets
+filteredData <- credit_rand[, -(highlycor[5]+1)]
+filteredTraining <- filteredData[1:750, ]
+filteredTest <- filteredData[751:1000, ]
 
-## @knitr Part1Step3
+## @knitr part1Step2
+
+# Build and evaluate the Naive Bayes Classifier as usual
+filteredTraining$Creditability <- filteredTraining$Creditability %>% as.factor()
+nb_model <- naive_bayes(Creditability ~ ., data = filteredTraining)
+
+
+## @knitr part1Step3
+
+# Evaluate the Naive Bayes Classifier as usual
+filteredTestPred <- predict(nb_model, newdata = filteredTest)
+table(filteredTestPred, filteredTest$Creditability)

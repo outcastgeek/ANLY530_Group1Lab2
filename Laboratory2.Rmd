@@ -41,11 +41,24 @@ Let us start by [Loading the Data Sheets]
 ```{r loadSheets, echo=FALSE, message=FALSE, warning=FALSE}
 ```
 
-# Part 1
+# Part 1: Exploring and Preparing the Data
 
 ## Collecting the data
 
 ```{r collectingData, echo=FALSE, message=FALSE, warning=FALSE}
 ```
 
+## Step 1
 
+```{r part1Step1, message=FALSE, warning=FALSE}
+```
+
+## Step 2: Training a Model on the Data
+
+```{r part1Step2, message=FALSE, warning=FALSE}
+```
+
+## Step 3: Evaluating Model Performance
+
+```{r part1Step3, message=FALSE, warning=FALSE}
+```
