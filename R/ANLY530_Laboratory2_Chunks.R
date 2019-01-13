@@ -70,4 +70,22 @@ onlineNewsPopularity <- onlineNewsPopularityFile %>%
   fullFilePath %>%
   read.csv(encoding = "UTF-8", header=TRUE, stringsAsFactors=FALSE)
 
-## @knitr Part1
+## @knitr Part1Step1
+
+sum(is.na(credit))
+
+# Randomize the data
+credit_rand <-credit[order(runif(1000)), ]
+
+# Scale the data
+creditDataScaled <- scale(credit_rand[,2:ncol(credit_rand)], center=TRUE, scale = TRUE)
+
+# Compute the correlation matrix
+m <- cor(creditDataScaled)
+
+# Determine the threshold to use for feature (variable) selection and perform feature selection
+highlycor <- findCorrelation(m, 0.30)
+
+## @knitr Part1Step2
+
+## @knitr Part1Step3
