@@ -164,6 +164,13 @@ $(document).ready(function () {
 <pre><code>## Warning: package 'kableExtra' was built under R version 3.5.2</code></pre>
 <p>Some helper functions do exists to support the code snippets below such as: <code>fullFilePath</code></p>
 <hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(caret)
+<span class="kw">library</span>(naivebayes)</code></pre></div>
+</div>
+<div id="collecting-the-data" class="section level2">
+<h2>Collecting the data</h2>
 <p>Let us start by [Loading the Data Sheets]</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Set Data File Name:</span>
 creditDataFile &lt;-<span class="st"> &quot;creditData.csv&quot;</span>
@@ -214,8 +221,8 @@ credit <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">i
 <span class="co"># Randomize data</span>
 credit_rand &lt;-<span class="st"> </span>credit[<span class="kw">order</span>(<span class="kw">runif</span>(<span class="dv">1000</span>)), ]</code></pre></div>
 </div>
-<div id="collecting-the-data" class="section level2">
-<h2>Collecting the data</h2>
+<div id="credit-data" class="section level2">
+<h2># Credit Data</h2>
 </div>
 <div id="part-1" class="section level1">
 <h1>Part 1:</h1>
@@ -329,6 +336,124 @@ filteredTestPred &lt;-<span class="st"> </span><span class="kw">predict</span>(n
 ##                1  21 136</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(Accuracy &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">diag</span>(conf_nat))<span class="op">/</span><span class="kw">sum</span>(conf_nat)<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
 <pre><code>## [1] 74</code></pre>
+</div>
+<div id="online-news-popularity" class="section level2">
+<h2># ONLINE NEWS POPULARITY</h2>
+</div>
+</div>
+<div id="part-3" class="section level1">
+<h1>Part 3:</h1>
+<div id="step-1-exploring-and-preparing-the-data-2" class="section level2">
+<h2>Step 1: Exploring and Preparing the Data</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Data Preperation</span>
+newsShort &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  onlineNewsPopularity<span class="op">$</span>n_tokens_title,
+  onlineNewsPopularity<span class="op">$</span>n_tokens_content,
+  onlineNewsPopularity<span class="op">$</span>n_unique_tokens,
+  onlineNewsPopularity<span class="op">$</span>n_non_stop_words,
+  onlineNewsPopularity<span class="op">$</span>num_hrefs,
+  onlineNewsPopularity<span class="op">$</span>num_imgs,
+  onlineNewsPopularity<span class="op">$</span>num_videos,
+  onlineNewsPopularity<span class="op">$</span>average_token_length,
+  onlineNewsPopularity<span class="op">$</span>num_keywords,
+  onlineNewsPopularity<span class="op">$</span>kw_max_max,
+  onlineNewsPopularity<span class="op">$</span>global_sentiment_polarity,
+  onlineNewsPopularity<span class="op">$</span>avg_positive_polarity,
+  onlineNewsPopularity<span class="op">$</span>title_subjectivity,
+  onlineNewsPopularity<span class="op">$</span>title_sentiment_polarity,
+  onlineNewsPopularity<span class="op">$</span>abs_title_subjectivity,
+  onlineNewsPopularity<span class="op">$</span>abs_title_sentiment_polarity,
+  onlineNewsPopularity<span class="op">$</span>shares
+  )
+
+<span class="kw">colnames</span>(newsShort) &lt;-<span class="st"> </span><span class="kw">c</span>(
+  <span class="st">&quot;n_tokens_title&quot;</span>,
+  <span class="st">&quot;n_tokens_content&quot;</span>,
+  <span class="st">&quot;n_unique_tokens&quot;</span>,
+  <span class="st">&quot;n_non_stop_words&quot;</span>,
+  <span class="st">&quot;num_hrefs&quot;</span>,
+  <span class="st">&quot;num_imgs&quot;</span>,
+  <span class="st">&quot;num_videos&quot;</span>,
+  <span class="st">&quot;average_token_length&quot;</span>,
+  <span class="st">&quot;num_keywords&quot;</span>,
+  <span class="st">&quot;kw_max_max&quot;</span>,
+  <span class="st">&quot;global_sentiment_polarity&quot;</span>,
+  <span class="st">&quot;avg_positive_polarity&quot;</span>,
+  <span class="st">&quot;title_subjectivity&quot;</span>,
+  <span class="st">&quot;title_sentiment_polarity&quot;</span>,
+  <span class="st">&quot;abs_title_subjectivity&quot;</span>,
+  <span class="st">&quot;abs_title_sentiment_polarity&quot;</span>,
+  <span class="st">&quot;shares&quot;</span>
+  )
+
+<span class="co"># Data Preperation</span>
+newsShort<span class="op">$</span>popular =<span class="st"> </span><span class="kw">rep</span>(<span class="st">'na'</span>, <span class="kw">nrow</span>(newsShort))
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">39644</span>) {
+  <span class="cf">if</span>(newsShort<span class="op">$</span>shares[i] <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1400</span>) {
+    newsShort<span class="op">$</span>popular[i] =<span class="st"> &quot;yes&quot;</span>} 
+  <span class="cf">else</span> {newsShort<span class="op">$</span>popular[i] =<span class="st"> &quot;no&quot;</span>}
+}
+newsShort<span class="op">$</span>shares =<span class="st"> </span>newsShort<span class="op">$</span>popular
+newsShort<span class="op">$</span>shares &lt;-<span class="st"> </span><span class="kw">as.factor</span>(newsShort<span class="op">$</span>shares)
+
+<span class="co"># Data Preperation</span>
+news_rand &lt;-<span class="st"> </span>newsShort[<span class="kw">order</span>(<span class="kw">runif</span>(<span class="dv">10000</span>)), ]
+
+<span class="co"># Split the data into training and test datasets</span>
+news_train &lt;-<span class="st"> </span>news_rand[<span class="dv">1</span><span class="op">:</span><span class="dv">9000</span>, ]
+news_test &lt;-<span class="st"> </span>news_rand[<span class="dv">9001</span><span class="op">:</span><span class="dv">10000</span>, ]</code></pre></div>
+</div>
+<div id="step-2-training-a-model-on-the-data-2" class="section level2">
+<h2>Step 2: Training a Model on the Data</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nb_model &lt;-<span class="st"> </span><span class="kw">naive_bayes</span>(shares <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>news_train)
+nb_model</code></pre></div>
+<pre><code>## ================================ Naive Bayes ================================= 
+## Call: 
+## naive_bayes.formula(formula = shares ~ ., data = news_train)
+## 
+## A priori probabilities: 
+## 
+##        no       yes 
+## 0.4274444 0.5725556 
+## 
+## Tables: 
+##               
+## n_tokens_title       no      yes
+##           mean 9.850533 9.708713
+##           sd   1.941357 1.992989
+## 
+##                 
+## n_tokens_content       no      yes
+##             mean 453.5602 509.1081
+##             sd   355.0450 443.1064
+## 
+##                
+## n_unique_tokens        no       yes
+##            mean 0.5706610 0.5545325
+##            sd   0.1133183 0.1242619
+## 
+##                 
+## n_non_stop_words         no        yes
+##             mean 0.99402131 0.99010285
+##             sd   0.07710049 0.09900048
+## 
+##          
+## num_hrefs        no       yes
+##      mean  9.102677 10.503978
+##      sd    8.430075 11.430557
+## 
+## # ... and 12 more tables</code></pre>
+</div>
+<div id="step-3-evaluating-model-performance-2" class="section level2">
+<h2>Step 3: Evaluating Model Performance</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">news_Pred &lt;-<span class="st"> </span><span class="kw">predict</span>(nb_model, <span class="dt">newdata =</span> news_test)
+(conf_nat &lt;-<span class="st"> </span><span class="kw">table</span>(news_Pred, news_test<span class="op">$</span>shares))</code></pre></div>
+<pre><code>##          
+## news_Pred  no yes
+##       no  445   0
+##       yes   0 555</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(Accuracy &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">diag</span>(conf_nat))<span class="op">/</span><span class="kw">sum</span>(conf_nat)<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
+<pre><code>## [1] 100</code></pre>
 </div>
 </div>
 

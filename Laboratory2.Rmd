@@ -33,18 +33,18 @@ Some helper functions do exists to support the code snippets below such as: ```f
 
 ---
 
-```{r loadLibraries, echo=FALSE, message=FALSE, warning=FALSE}
+```{r loadLibraries, message=FALSE, warning=FALSE}
 ```
+
+## Collecting the data
 
 Let us start by [Loading the Data Sheets]
 
 ```{r loadSheets, message=FALSE, warning=FALSE}
 ```
 
-## Collecting the data
-
-```{r collectingData, echo=FALSE, message=FALSE, warning=FALSE}
-```
+# Credit Data
+-------------
 
 # Part 1:
 
@@ -82,3 +82,22 @@ Let us start by [Loading the Data Sheets]
 ```{r part2Step3, message=FALSE, warning=FALSE}
 ```
 
+# ONLINE NEWS POPULARITY
+------------------------
+
+# Part 3:
+
+## Step 1: Exploring and Preparing the Data
+
+```{r part3Step1, message=FALSE, warning=FALSE}
+```
+
+## Step 2: Training a Model on the Data
+
+```{r part3Step2, message=FALSE, warning=FALSE}
+```
+
+## Step 3: Evaluating Model Performance
+
+```{r part3Step3, message=FALSE, warning=FALSE}
+```
