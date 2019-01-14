@@ -70,9 +70,39 @@ onlineNewsPopularity <- onlineNewsPopularityFile %>%
   fullFilePath %>%
   read.csv(encoding = "UTF-8", header=TRUE, stringsAsFactors=FALSE)
 
+sum(is.na(credit))
+str(credit)
+
+# Pre-Processing
+credit$Creditability <- credit$Creditability %>% as.factor()
+credit %>% is.na() %>% sum()
+
+# Set seed for Random
+set.seed(12345)
+
+# Randomize data
+credit_rand <- credit[order(runif(1000)), ]
+
 ## @knitr part1Step1
 
-sum(is.na(credit))
+# 75% means 750 for training and the rest for testing
+credit_train <- credit_rand[1:750, ]
+credit_test <- credit_rand[751:1000, ]
+
+prop.table(table(credit_train$Creditability))
+prop.table(table(credit_test$Creditability))
+
+## @knitr part1Step2
+
+naive_model <- naive_bayes(Creditability ~ ., data= credit_train)
+naive_model
+
+## @knitr part1Step3
+
+(conf_nat <- table(predict(naive_model, credit_test), credit_test$Creditability))
+(Accuracy <- sum(diag(conf_nat))/sum(conf_nat)*100)
+
+## @knitr part2Step1
 
 # Randomize the data
 credit_rand <-credit[order(runif(1000)), ]
@@ -91,15 +121,17 @@ filteredData <- credit_rand[, -(highlycor[5]+1)]
 filteredTraining <- filteredData[1:750, ]
 filteredTest <- filteredData[751:1000, ]
 
-## @knitr part1Step2
+## @knitr part2Step2
 
 # Build and evaluate the Naive Bayes Classifier as usual
-filteredTraining$Creditability <- filteredTraining$Creditability %>% as.factor()
 nb_model <- naive_bayes(Creditability ~ ., data = filteredTraining)
 
 
-## @knitr part1Step3
+## @knitr part2Step3
 
 # Evaluate the Naive Bayes Classifier as usual
 filteredTestPred <- predict(nb_model, newdata = filteredTest)
 table(filteredTestPred, filteredTest$Creditability)
+
+(conf_nat <- table(filteredTestPred, filteredTest$Creditability))
+(Accuracy <- sum(diag(conf_nat))/sum(conf_nat)*100)

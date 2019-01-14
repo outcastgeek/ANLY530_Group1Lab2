@@ -1,5 +1,5 @@
 ---
-title: "ANLY 530 Group Assignment (Laboratory 2)"
+title: "ANLY 530 Group Assignment (Laboratory 2: Naive Bayes Classifiers)"
 author:
 - "Josseline Betio"
 - "Akpany Benjamin Ebby"
@@ -38,15 +38,15 @@ Some helper functions do exists to support the code snippets below such as: ```f
 
 Let us start by [Loading the Data Sheets]
 
-```{r loadSheets, echo=FALSE, message=FALSE, warning=FALSE}
+```{r loadSheets, message=FALSE, warning=FALSE}
 ```
-
-# Part 1 & 2: Naive Bayes Classifiers
 
 ## Collecting the data
 
 ```{r collectingData, echo=FALSE, message=FALSE, warning=FALSE}
 ```
+
+# Part 1:
 
 ## Step 1: Exploring and Preparing the Data
 
@@ -62,3 +62,23 @@ Let us start by [Loading the Data Sheets]
 
 ```{r part1Step3, message=FALSE, warning=FALSE}
 ```
+
+---
+
+# Part 2:
+
+## Step 1: Exploring and Preparing the Data
+
+```{r part2Step1, message=FALSE, warning=FALSE}
+```
+
+## Step 2: Training a Model on the Data
+
+```{r part2Step2, message=FALSE, warning=FALSE}
+```
+
+## Step 3: Evaluating Model Performance
+
+```{r part2Step3, message=FALSE, warning=FALSE}
+```
+
