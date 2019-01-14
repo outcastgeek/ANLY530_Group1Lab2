@@ -291,6 +291,10 @@ naive_model</code></pre></div>
 ##   1  22 151</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(Accuracy &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">diag</span>(conf_nat))<span class="op">/</span><span class="kw">sum</span>(conf_nat)<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
 <pre><code>## [1] 77.2</code></pre>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<p>The credit data set contains 21 variables and 1000 records. Before, applying the naive Bayes to the data set, we prepare the data set. We first ensure that there are no missing values or NA values. The data set is randomized first and then split between a training and test data set. Also, to use the Naive Bayes classifier we have to make sure to format the class variables as factor. After the data preparation, we build the Naive Bayes Classifier model. From the model, it appears 31.4667% of applicants are not credit worthy and 68.5333% of applicants are credit worthy. To evaluate the model, we use a confusion table. Out of the 250 observations in the testing data set, 193 observations are correctly classified, 57 observations are mis-classified.</p>
 <hr />
 </div>
 </div>
@@ -336,6 +340,10 @@ filteredTestPred &lt;-<span class="st"> </span><span class="kw">predict</span>(n
 ##                1  16 132</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(Accuracy &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">diag</span>(conf_nat))<span class="op">/</span><span class="kw">sum</span>(conf_nat)<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
 <pre><code>## [1] 74.4</code></pre>
+</div>
+<div id="analysis-1" class="section level2">
+<h2>Analysis</h2>
+<p>In the second part, we reapply the Naive Bayes Classifier but manually try to improve the model. Again we prepare analyze the data before applying the model. We scale the randomized data. Correlations between variables are analyzed using the corrplot package. We set a correlation threshold as 0.30 and use the “find correlation’ function to determine variables that are highly correlated. We observe that account balance, payment status of previous credit, and duration of credit are highly correlated to creditability. Account balance has the highest correlation with creditability. Account balance and payment status of previous credit are positively correlated to creditability while duration of credit is negatively correlated to creditability. We apply the Naive Bayes model to the filtered data and evaluate the model on the test data set. Out of 250 observations, 186 observations are correctly classified. The accuracy level is at 74.4% which is lower compared to the accuracy level in part 1.</p>
 </div>
 <div id="online-news-popularity" class="section level2">
 <h2># ONLINE NEWS POPULARITY</h2>
@@ -454,6 +462,10 @@ nb_model</code></pre></div>
 ##       yes   0 555</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(Accuracy &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">diag</span>(conf_nat))<span class="op">/</span><span class="kw">sum</span>(conf_nat)<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
 <pre><code>## [1] 100</code></pre>
+</div>
+<div id="analysis-2" class="section level2">
+<h2>Analysis</h2>
+<p>n part 3 we applied the two previous methods to the online news popularity data set. We prepare the data by converting the news popularity variable into a factor variable and split the data set into a training and test data set again. The first method with no manual improvement classifies all observations correctly and has an accuracy rate of 100%. Therefore, we recommend using the first method since in the previous parts, it also generated a higher accuracy rate.</p>
 </div>
 </div>
 
