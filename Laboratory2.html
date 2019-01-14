@@ -311,7 +311,7 @@ m &lt;-<span class="st"> </span><span class="kw">cor</span>(creditDataScaled)
 highlycor &lt;-<span class="st"> </span><span class="kw">findCorrelation</span>(m, <span class="fl">0.30</span>)
 
 <span class="co"># Recombine the class variable with the highly correlated credit data and split into training and test data sets</span>
-filteredData &lt;-<span class="st"> </span>credit_rand[, <span class="op">-</span>(highlycor[<span class="dv">5</span>]<span class="op">+</span><span class="dv">1</span>)]
+filteredData &lt;-<span class="st"> </span>credit_rand[, <span class="op">-</span>(highlycor[<span class="dv">2</span>]<span class="op">+</span><span class="dv">1</span>)]
 filteredTraining &lt;-<span class="st"> </span>filteredData[<span class="dv">1</span><span class="op">:</span><span class="dv">750</span>, ]
 filteredTest &lt;-<span class="st"> </span>filteredData[<span class="dv">751</span><span class="op">:</span><span class="dv">1000</span>, ]</code></pre></div>
 </div>
@@ -327,15 +327,15 @@ filteredTestPred &lt;-<span class="st"> </span><span class="kw">predict</span>(n
 <span class="kw">table</span>(filteredTestPred, filteredTest<span class="op">$</span>Creditability)</code></pre></div>
 <pre><code>##                 
 ## filteredTestPred   0   1
-##                0  49  44
-##                1  21 136</code></pre>
+##                0  54  48
+##                1  16 132</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(conf_nat &lt;-<span class="st"> </span><span class="kw">table</span>(filteredTestPred, filteredTest<span class="op">$</span>Creditability))</code></pre></div>
 <pre><code>##                 
 ## filteredTestPred   0   1
-##                0  49  44
-##                1  21 136</code></pre>
+##                0  54  48
+##                1  16 132</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(Accuracy &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">diag</span>(conf_nat))<span class="op">/</span><span class="kw">sum</span>(conf_nat)<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
-<pre><code>## [1] 74</code></pre>
+<pre><code>## [1] 74.4</code></pre>
 </div>
 <div id="online-news-popularity" class="section level2">
 <h2># ONLINE NEWS POPULARITY</h2>

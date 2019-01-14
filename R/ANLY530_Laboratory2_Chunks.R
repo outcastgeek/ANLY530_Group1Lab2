@@ -117,7 +117,7 @@ m <- cor(creditDataScaled)
 highlycor <- findCorrelation(m, 0.30)
 
 # Recombine the class variable with the highly correlated credit data and split into training and test data sets
-filteredData <- credit_rand[, -(highlycor[5]+1)]
+filteredData <- credit_rand[, -(highlycor[2]+1)]
 filteredTraining <- filteredData[1:750, ]
 filteredTest <- filteredData[751:1000, ]
 
